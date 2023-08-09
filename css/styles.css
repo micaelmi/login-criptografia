@@ -26,6 +26,10 @@ img {
 
 /*===========================*/
 
+:root {
+  color-scheme: dark;
+}
+
 main, form {
   margin-top: 1rem;
   display: flex;
@@ -41,7 +45,7 @@ form {
 
 input, button, form {
   width: 100%;
-  border: 1px solid #000;
+  border: 1px solid #ded;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
 }
