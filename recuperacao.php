@@ -64,24 +64,25 @@ try {
   //header("location:index.php");
   die();
 }
+$duracao = time() + (60 * 15); // 15 minutos
 
+setcookie("recovery", serialize($email), $duracao, '/'); // Salva o e-mail de recuperação
 
-// - Mandar email com link de edição e código de acesso
-
-// GERA EMAIL
+// - Mandar email com código de acesso
+/*
 $para = "$email";
 $assunto = "Código para recuperação de conta";
 $mensagem = "
   Olá,
 
-  Recebemos uma solicitação para a troca de senha do seu perfil através da opção “Esqueci minha senha”.
+  Recebemos sua solicitação para troca de senha do seu perfil através da opção “Esqueci minha senha”.
   
   Segue o código de validação necessário para prosseguir com a redefinição da sua senha.
   
   Código de acesso: $codigo
   (Este código só é válido por 15 minutos)
   
-  Caso isso seja um engano e não tenha solicitado a troca, por favor, ignore esse e-mail";
+  Caso você não tenha solicitado a troca de senha, por favor, ignore esse e-mail";
 
 $headers = "From: micael@fluencydesign.com.br\r\n";
 $headers .= "Reply-To: contato@fluencydesign.com.br\r\n";
@@ -93,12 +94,7 @@ if (mail($para, $assunto, $mensagem, $headers)) {
 } else {
   echo "Erro ao enviar o e-mail.";
 }
-
-function mandaEmail()
-{
-}
-
-setcookie("recovery", serialize($email), 900, '/'); // Salva o e-mail de recuperação
+*/
 
 $bd = null;
 header("location:codigo.php"); // Tela de confirmação do código

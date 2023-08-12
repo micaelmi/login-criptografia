@@ -12,9 +12,10 @@
   <main>
     <h1>Recuperação de conta</h1>
     <form action="recuperacao.php" method="POST">
-      <h2>Informe seu e-mail</h2>
+      <h2>Informe seu e-mail para prosseguir</h2>
       <input type="e-mail" placeholder="Seu e-mail..." name="email">
-      <p>Uma nova senha será enviada para seu e-mail, depois você pode mudá-la no seu perfil</p>
+      <p>Um código de segurança será enviado a esse e-mail para que 
+        você possa continuar o processo de recuperação de conta</p>
       <button type="submit">Enviar</button>
     </form>
   </main>

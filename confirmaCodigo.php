@@ -19,7 +19,7 @@ $dataHoraAtual = new DateTime();
 $horaAtual = $dataHoraAtual->format('Y-m-d H:i:s');
 
 $bd = connection();
-$sql = "SELECT * FROM codigos_recuperacao WHERE codigo = '$codigo' AND validade > '$horaAtual' AND status = 'Não utilizado' DESC LIMIT 1";
+$sql = "SELECT * FROM codigos_recuperacao WHERE codigo = '$codigo' AND validade > '$horaAtual' AND status = 'Não utilizado' ORDER BY id DESC LIMIT 1";
 $comando = $bd->query($sql);
 $result = $comando->fetch(PDO::FETCH_ASSOC);
 
@@ -27,16 +27,19 @@ if (!$result) {
   echo "Código inválido. Ou está incorreto ou já expirou";
   exit();
 }
-
 $sql = "SELECT id FROM usuarios WHERE email = '$email'";
 $comando = $bd->query($sql);
 $id_usuario = $comando->fetch(PDO::FETCH_ASSOC);
 
-if ($result['id_usuario'] == $id_usuario) {
+echo $result['id_usuario'];
+
+if ($result['id_usuario'] == $id_usuario['id']) {
   echo "Código correto";
   $bd = null;
-  setcookie("aprovado", serialize($codigo), 900, '/');
+  $duracao = time() + (60 * 15); // 15 minutos
+  setcookie("aprovado", serialize($codigo), $duracao, '/');
   header("location:novaSenha.php");
+  exit();
 }
 
 $bd = null;

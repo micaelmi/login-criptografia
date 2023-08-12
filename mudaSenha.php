@@ -11,7 +11,7 @@ $senha = password_hash(filter_input(INPUT_POST, 'senha'), PASSWORD_DEFAULT);
 include_once 'conexao.php';
 $bd = connection();
 
-$sql = "SELECT * FROM codigos_recuperacao WHERE codigo = '$codigo' AND status = 'Não utilizado' DESC LIMIT 1";
+$sql = "SELECT * FROM codigos_recuperacao WHERE codigo = '$codigo' AND status = 'Não utilizado' ORDER BY id DESC LIMIT 1";
 $comando = $bd->query($sql);
 $result = $comando->fetch(PDO::FETCH_ASSOC);
 
@@ -55,3 +55,8 @@ try {
   //header("location:index.php");
   die();
 }
+
+echo "Senha alterada com sucesso";
+$time = time() - 10000;
+setcookie("aprovado", "", $time, "/");
+setcookie("recovery", "", $time, "/");
