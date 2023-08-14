@@ -52,7 +52,7 @@ try {
   $params = "Erro!";
   $bd = null;
   echo "erro";
-  //header("location:index.php");
+  header("location:index.php");
   die();
 }
 

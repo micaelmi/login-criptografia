@@ -69,7 +69,6 @@ $duracao = time() + (60 * 15); // 15 minutos
 setcookie("recovery", serialize($email), $duracao, '/'); // Salva o e-mail de recuperação
 
 // - Mandar email com código de acesso
-/*
 $para = "$email";
 $assunto = "Código para recuperação de conta";
 $mensagem = "
@@ -85,7 +84,7 @@ $mensagem = "
   Caso você não tenha solicitado a troca de senha, por favor, ignore esse e-mail";
 
 $headers = "From: micael@fluencydesign.com.br\r\n";
-$headers .= "Reply-To: contato@fluencydesign.com.br\r\n";
+$headers .= "Reply-To: micael@fluencydesign.com.br\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
 
@@ -94,7 +93,6 @@ if (mail($para, $assunto, $mensagem, $headers)) {
 } else {
   echo "Erro ao enviar o e-mail.";
 }
-*/
 
 $bd = null;
-header("location:codigo.php"); // Tela de confirmação do código
+//header("location:codigo.php"); // Tela de confirmação do código

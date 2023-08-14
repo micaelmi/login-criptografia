@@ -5,7 +5,13 @@ $senha = password_hash(filter_input(INPUT_POST, 'senha'), PASSWORD_DEFAULT);
 
 include_once './conexao.php';
 
-$bd = connection();
+try {
+  $bd = connection();
+  // Resto do código usando a conexão
+} catch (PDOException $e) {
+  echo "Erro na conexão: " . $e->getMessage();
+}
+// $bd = connection();
 $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
 
 try {
