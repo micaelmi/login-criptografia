@@ -16,23 +16,8 @@ if (!$result) {
 
 $id = $result["id"];
 
-// === === === Geração de token para recuperação de senha === === === //
-
-function geraCodigo($tamanho)
-{
-  $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#@!%._-+*&$';
-  $codigo = '';
-
-  for ($i = 0; $i < $tamanho; $i++) {
-    $codigo .= $caracteres[random_int(0, strlen($caracteres) - 1)];
-  }
-
-  return $codigo;
-}
-
-$tamanhoCodigo = random_int(8, 16);
-
-$codigo = geraCodigo($tamanhoCodigo);
+// token para recuperação de senha
+$codigo = rand(1000, 9999);
 
 // === === === === === Definição da validade === === === === ===
 // Configura o fuso horário para o horário de São Paulo (GMT-3)
@@ -95,4 +80,4 @@ if (mail($para, $assunto, $mensagem, $headers)) {
 }
 
 $bd = null;
-//header("location:codigo.php"); // Tela de confirmação do código
+header("location:codigo.php"); // Tela de confirmação do código

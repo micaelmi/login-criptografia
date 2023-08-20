@@ -30,7 +30,8 @@ img {
   color-scheme: dark;
 }
 
-main, form {
+main,
+form {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -43,7 +44,9 @@ form {
   max-width: 400px;
 }
 
-input, button, form {
+input,
+button,
+form {
   width: 100%;
   border: 1px solid #ded;
   border-radius: 0.5rem;
@@ -53,4 +56,8 @@ input, button, form {
 button {
   margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.error-message {
+  display: none;
 }
